@@ -1,3 +1,22 @@
-.App {
-  text-align: center;
+html {
+  background-color: aquamarine;
+  margin: 0 auto;
+  max-width: 1200px;
+  min-height: 100vh;
+  padding: 10px;
+}
+
+.divContainer {
+  display: flex;
+  flex-basis: 49.75%;
+  height: auto;
+  padding: 20px;
+}
+
+.astronomyData {
+  background-color: darkcyan;
+}
+
+.songData {
+  background-color: lightcoral;
 }

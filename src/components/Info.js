@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 
-function InfoCard({
+function Info({
     album,
     artist,
     current_time,
@@ -16,9 +16,9 @@ function InfoCard({
     sunset
 }) {
     return (
-        <div>
-            <h1>Hello</h1>
-            <div>
+        <div class="divContainer">
+            <div class="astronomyData">
+                <h1>Sun & Moon Data for New York City</h1>
                 <h3>Date: {date}</h3>
                 <h3>Current Time: {current_time}</h3>
                 <h3>Day Length: {day_length}</h3>
@@ -27,7 +27,8 @@ function InfoCard({
                 <h3>Sunrise: {sunrise}</h3>
                 <h3>Sunset: {sunset}</h3>
             </div>
-            <div>
+            <div class="songData">
+                <h1>Recommended Song</h1>
                 <h3>{song_title}</h3>
                 <h3>{album}</h3>
                 <h3>{artist}</h3>
@@ -39,4 +40,4 @@ function InfoCard({
     )
 };
 
-export default InfoCard;
+export default Info;

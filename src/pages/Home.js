@@ -1,13 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import { GEOLOCATION_API_KEY } from "../API_KEYS";
-import InfoCard from '../components/InfoCard';
+import Info from '../components/Info';
 import SongData from '../components/SongData';
 
 function Home() {
   const [astronomyData, setAstronomyData] = useState({});
   const URL = `https://api.ipgeolocation.io/astronomy?apiKey=${GEOLOCATION_API_KEY}&location=New%York`;
-
+ 
   useEffect (() => {
     axios
     .get(URL)
@@ -22,16 +22,14 @@ function Home() {
 }, []);
 
 const { album, artist, current_time, date, day_length, link, moonrise, moonset, photo, running_time, song_title, sunrise, sunset } = useMemo(() => {
-  const hour = parseInt(astronomyData.current_time[0]+astronomyData.current_time[1]);
-  const minutes = astronomyData.current_time[3]+astronomyData.current_time[4];
-  const time = hour + ":" + minutes;
+  const dt = new Date();
+  const hour = dt.getHours();
+  console.log(hour);
   const currentSong = SongData[hour];
-  // console.log(hour);
   return {
     album: currentSong.album,
     artist: currentSong.artist,
-    current_time: time,
-    // current_time: astronomyData.current_time,
+    current_time: astronomyData.current_time,
     date: astronomyData.date,
     day_length: astronomyData.day_length,
     link: currentSong.streamingLink,
@@ -47,7 +45,7 @@ const { album, artist, current_time, date, day_length, link, moonrise, moonset, 
 
   return (
     <div className="App">
-      <InfoCard
+      <Info
         album={album}
         artist={artist}
         current_time={current_time}

@@ -6,11 +6,22 @@ html {
   padding: 10px;
 }
 
-.divContainer {
+.query {
   display: flex;
-  flex-basis: 49.75%;
+  justify-content: space-between;
+}
+
+.data {
+  background-color: pink;
+  display: flex;
   height: auto;
   padding: 20px;
+  width: 100%
+}
+
+.astronomyData, .songData {
+  padding: 20px;
+  width:50%;
 }
 
 .astronomyData {

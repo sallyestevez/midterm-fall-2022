@@ -77,7 +77,7 @@ export default [
     "artist": "LOONA",
     "art": "https://static.wikia.nocookie.net/loonatheworld/images/b/ba/Flip_That_Digital_Album_Cover_Ver_B.png/revision/latest?cb=20220620162917",
     "songLength": "2:57",
-    "streamingLink": "https://open.spotify.com/track/7cHXwaBnIBFUPuP376z07E?si=14000fcd01904313"
+    "streamingLink": "https://open.spotify.com/embed/track/7cHXwaBnIBFUPuP376z07E?si=14000fcd01904313"
   },
   {
     "songTitle": "Kiss Later",

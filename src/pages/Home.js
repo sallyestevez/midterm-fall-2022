@@ -1,18 +1,22 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
+import { useSearchParams } from 'react-router-dom';
 import { GEOLOCATION_API_KEY } from "../API_KEYS";
 import Info from '../components/Info';
 import SongData from '../components/SongData';
 
 function Home() {
   const [astronomyData, setAstronomyData] = useState({});
+  const [sunMoonData, setSunMoonData] = useState("Sun");
+  const [searchParams] = useSearchParams();
   const URL = `https://api.ipgeolocation.io/astronomy?apiKey=${GEOLOCATION_API_KEY}&location=New%York`;
- 
+
   useEffect (() => {
+    const dataToQuery = searchParams.get("sunMoonData");
+    setSunMoonData(dataToQuery);
     axios
     .get(URL)
     .then(function(response) {
-      console.log('response', response);
       setAstronomyData(response.data);
     })
     .catch(function(error) {
@@ -21,11 +25,14 @@ function Home() {
     });
 }, []);
 
-const { album, artist, current_time, date, day_length, link, moonrise, moonset, photo, running_time, song_title, sunrise, sunset } = useMemo(() => {
+const { album, artist, current_time, date, day_length, link, photo, rise, running_time, set, song_title, time_of_day } = useMemo(() => {
   const dt = new Date();
   const hour = dt.getHours();
-  console.log(hour);
   const currentSong = SongData[hour];
+
+  const sunMoonRise = (searchParams.get("sunMoonData")).toLowerCase()+"rise";
+  const sunMoonSet = (searchParams.get("sunMoonData")).toLowerCase()+"set";
+
   return {
     album: currentSong.album,
     artist: currentSong.artist,
@@ -33,13 +40,12 @@ const { album, artist, current_time, date, day_length, link, moonrise, moonset, 
     date: astronomyData.date,
     day_length: astronomyData.day_length,
     link: currentSong.streamingLink,
-    moonrise: astronomyData.moonrise,
-    moonset: astronomyData.moonset,
+    rise: astronomyData[sunMoonRise],
+    set: astronomyData[sunMoonSet],
     photo: currentSong.art,
     running_time: currentSong.songLength,
     song_title: currentSong.songTitle,
-    sunrise: astronomyData.sunrise,
-    sunset: astronomyData.sunset,
+    time_of_day: searchParams.get("sunMoonData")
   };
 }, [astronomyData]);
 
@@ -52,13 +58,12 @@ const { album, artist, current_time, date, day_length, link, moonrise, moonset, 
         date={date}
         day_length={day_length}
         link={link}
-        moonrise={moonrise}
-        moonset={moonset}
+        rise={rise}
+        set={set}
         photo={photo}
         running_time={running_time}
         song_title={song_title}
-        sunrise={sunrise}
-        sunset={sunset}
+        time_of_day={time_of_day}
       />
     </div>
   );

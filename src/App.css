@@ -6,9 +6,19 @@ html {
   padding: 10px;
 }
 
-.query {
+
+header {
   display: flex;
-  justify-content: space-between;
+  gap: 500px;
+  justify-content:center;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: blueviolet;
 }
 
 .data {
@@ -30,4 +40,25 @@ html {
 
 .songData {
   background-color: lightcoral;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+}
+
+.albumCover {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+}
+
+.albumCover:hover {
+  opacity: 50%;
+}
+
+.songTitle, .songInfo {
+  display: flex;
+  justify-content: center;
 }

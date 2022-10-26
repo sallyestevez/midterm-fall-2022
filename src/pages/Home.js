@@ -7,7 +7,7 @@ import SongData from '../components/SongData';
 
 function Home() {
   const [astronomyData, setAstronomyData] = useState({});
-  const [sunMoonData, setSunMoonData] = useState("Sun");
+  const [sunMoonData, setSunMoonData] = useState("sun");
   const [searchParams] = useSearchParams();
   const URL = `https://api.ipgeolocation.io/astronomy?apiKey=${GEOLOCATION_API_KEY}&location=New%York`;
 
@@ -30,8 +30,8 @@ const { album, artist, current_time, date, day_length, link, photo, rise, runnin
   const hour = dt.getHours();
   const currentSong = SongData[hour];
 
-  const sunMoonRise = (searchParams.get("sunMoonData")).toLowerCase()+"rise";
-  const sunMoonSet = (searchParams.get("sunMoonData")).toLowerCase()+"set";
+  const sunMoonRise = (searchParams.get("sunMoonData") + "rise");
+  const sunMoonSet = (searchParams.get("sunMoonData") + "set");
 
   return {
     album: currentSong.album,

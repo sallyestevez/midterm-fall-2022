@@ -1,53 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Crushed&family=Koulen&family=Outfit&display=swap');
+
 html {
-  background-color: aquamarine;
+  background-color: #282e54;
   margin: 0 auto;
   max-width: 1200px;
   min-height: 100vh;
-  padding: 10px;
 }
-
 
 header {
   display: flex;
+  font-family: 'Crushed', cursive;
+  font-size: 20px;
   gap: 500px;
-  justify-content:center;
+  justify-content: space-around;
 }
 
 a {
+  color: #b093a3;
   text-decoration: none;
 }
 
 a:hover {
-  color: blueviolet;
+  color: #ffdd91;
+}
+
+.mainContainer > div {
+  border-radius: 20px;
 }
 
 .data {
-  background-color: pink;
   display: flex;
   height: auto;
-  padding: 20px;
   width: 100%
 }
 
 .astronomyData, .songData {
+  border-radius: 20px;
+  font-family: 'Outfit', sans-serif;
+  line-height: 1;
+  margin: 75px;
+  margin-top: 0px;
   padding: 20px;
   width:50%;
 }
 
 .astronomyData {
-  background-color: darkcyan;
+  background-color: #d6b2a5;
 }
 
 .songData {
-  background-color: lightcoral;
+  background-color: #787492;
 }
 
 .heading {
   display: flex;
+  font-family: 'Crushed', cursive;
   justify-content: center;
 }
 
-.albumCover {
+.albumCover, .sunMoonImage {
+  border-radius: 20px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -58,7 +70,12 @@ a:hover {
   opacity: 50%;
 }
 
-.songTitle, .songInfo {
+.songTitle, .songInfo, .date, .astronomyInfo {
   display: flex;
   justify-content: center;
+}
+
+.sunMoonImage, .albumCover, .songTitle, .songInfo, .date, .astronomyInfo {
+  margin-bottom: 15px;
+  margin-top: 10px;
 }

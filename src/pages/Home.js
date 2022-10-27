@@ -25,10 +25,11 @@ function Home() {
     });
 }, []);
 
-const { album, artist, current_time, date, day_length, link, photo, rise, running_time, set, song_title, time_of_day } = useMemo(() => {
+const { album, artist, current_time, date, day_length, genre, hour, length_sum, link, photo, rise, running_time, set, song_minutes, song_title, time_of_day } = useMemo(() => {
   const dt = new Date();
   const hour = dt.getHours();
   const currentSong = SongData[hour];
+  const length_sum = currentSong.songLength[0]+currentSong.songLength[2]+currentSong.songLength[3];
 
   const sunMoonRise = (searchParams.get("sunMoonData") + "rise");
   const sunMoonSet = (searchParams.get("sunMoonData") + "set");
@@ -39,9 +40,13 @@ const { album, artist, current_time, date, day_length, link, photo, rise, runnin
     current_time: astronomyData.current_time,
     date: astronomyData.date,
     day_length: astronomyData.day_length,
+    genre: currentSong.genre,
+    hour: hour,
     link: currentSong.streamingLink,
+    length_sum: length_sum,
     rise: astronomyData[sunMoonRise],
     set: astronomyData[sunMoonSet],
+    song_minutes: currentSong.songLength[0],
     photo: currentSong.art,
     running_time: currentSong.songLength,
     song_title: currentSong.songTitle,
@@ -50,22 +55,29 @@ const { album, artist, current_time, date, day_length, link, photo, rise, runnin
 }, [astronomyData]);
 
   return (
-    <div className="App">
-      <Info
-        album={album}
-        artist={artist}
-        current_time={current_time}
-        date={date}
-        day_length={day_length}
-        link={link}
-        rise={rise}
-        set={set}
-        photo={photo}
-        running_time={running_time}
-        song_title={song_title}
-        time_of_day={time_of_day}
-      />
+    <div style={{ 
+      color: `rgb(${length_sum / 3},46,84)`,
+      fontSize: `${song_minutes * 6}px`,
+      padding: `${song_minutes * 15}px`}}>
+      <div className="App">
+        <Info
+          album={album}
+          artist={artist}
+          current_time={current_time}
+          date={date}
+          day_length={day_length}
+          genre={genre}
+          link={link}
+          rise={rise}
+          set={set}
+          photo={photo}
+          running_time={running_time}
+          song_title={song_title}
+          time_of_day={time_of_day}
+        />
+      </div>
     </div>
+
   );
 };
 

@@ -7,6 +7,7 @@ function Info({
     current_time,
     date,
     day_length,
+    genre,
     link,
     rise,
     set,
@@ -18,22 +19,24 @@ function Info({
     return (
         <div class="mainContainer">
             <Header />
-            <div class="data">
-                <div class="astronomyData">
-                    <h1 class="heading">{time_of_day} data for NYC</h1>
-                    <h2 class="date">today's date is {date}</h2>
-                    <h3 class="astronomyInfo">the current time is {current_time}</h3>
-                    <h3 class="astronomyInfo">the day's length is {day_length}</h3>
-                    <h3 class="astronomyInfo">the {time_of_day} will rise at {rise}</h3>
-                    <h3 class="astronomyInfo">the {time_of_day} will set at {set}</h3>
+            <div className="data">
+                <div className="astronomyData">
+                    <h1 className="heading">{time_of_day} data for NYC</h1>
+                    <img className="sunMoonImage" src="https://i.scdn.co/image/ab67616d0000b2738365a1ab5bec269b4ed36194"></img>
+                    <h2 className="date">today's date is {date}</h2>
+                    <h3 className="astronomyInfo">the current time is {current_time}</h3>
+                    <h3 className="astronomyInfo">the day's length is {day_length}</h3>
+                    <h3 className="astronomyInfo">the {time_of_day} will rise at {rise}</h3>
+                    <h3 className="astronomyInfo">the {time_of_day} will set at {set}</h3>
                 </div>
-                <div class="songData">
-                    <h1 class="heading">song of the hour</h1>
-                    <a href={link}><img class="albumCover" src={photo}></img></a>
-                    <h2 class="songTitle">{song_title}</h2>
-                    <h3 class="songInfo">on {album}</h3>
-                    <h3 class="songInfo">by {artist}</h3>
-                    <h3 class="songInfo">running time: {running_time}</h3>
+                <div className="songData">
+                    <h1 className="heading">song of the hour</h1>
+                    <a href={link}><img className="albumCover" src={photo}></img></a>
+                    <h2 className="songTitle">{song_title}</h2>
+                    <h3 className="songInfo">on {album}</h3>
+                    <h3 className="songInfo">by {artist}</h3>
+                    <h3 className="songInfo">running time: {running_time}</h3>
+                    <h3 className="songInfo">genre: {genre}</h3>
                 </div>
             </div>
         </div>

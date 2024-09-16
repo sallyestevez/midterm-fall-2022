@@ -1,0 +1,1 @@
+export const GEOLOCATION_API_KEY = "eb756190f28149a2bead0283fdb28945";
